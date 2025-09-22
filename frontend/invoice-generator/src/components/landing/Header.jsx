@@ -7,6 +7,8 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+
+
     const isAuthenticated = true;
     const user = { name: "John Doe", email: "john@gmail.com" };
     const logout = () => { }; // Replace with actual logout function
@@ -17,9 +19,19 @@ const Header = () => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest(".profile-dropdown")) {
+                setProfileDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+        return () => document.removeEventListener("click", handleClickOutside);
     }, []);
 
     return (
@@ -44,15 +56,15 @@ const Header = () => {
                         <a href="#faq" className="text-gray-600 hover:text-gray-900 font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all hover:after:w-full">FAQ</a>
 
                         {/* Auth Buttons */}
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-4 profile-dropdown relative">
                             {isAuthenticated ? (
-                                <ProfileDropDown 
-                                isOpen={profileDropdownOpen} 
-                                onClose={(e) => {e.stopPropagation(); setProfileDropdownOpen(!profileDropdownOpen)}}
-                                avatar = {user?.avatar || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"}
-                                companyName = {user?.name || "User"}
-                                email = {user?.email || ""}
-                                onLogout = {logout}
+                                <ProfileDropDown
+                                    isOpen={profileDropdownOpen}
+                                    onToggle={(e) => { e.stopPropagation(); setProfileDropdownOpen(!profileDropdownOpen) }}
+                                    avatar={user?.avatar || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"}
+                                    companyName={user?.name || "User"}
+                                    email={user?.email || ""}
+                                    onLogout={logout}
                                 />
                             ) : (
                                 <>
