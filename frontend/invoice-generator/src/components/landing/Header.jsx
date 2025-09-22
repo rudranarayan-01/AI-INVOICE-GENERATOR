@@ -46,7 +46,9 @@ const Header = () => {
                         {/* Auth Buttons */}
                         <div className="flex items-center space-x-4">
                             {isAuthenticated ? (
-                                <ProfileDropDown isOpen={profileDropdownOpen} onClose={(e) => {e.stopPropagation(); setProfileDropdownOpen(!profileDropdownOpen)}}
+                                <ProfileDropDown 
+                                isOpen={profileDropdownOpen} 
+                                onClose={(e) => {e.stopPropagation(); setProfileDropdownOpen(!profileDropdownOpen)}}
                                 avatar = {user?.avatar || "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"}
                                 companyName = {user?.name || "User"}
                                 email = {user?.email || ""}
