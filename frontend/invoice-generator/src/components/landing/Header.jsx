@@ -96,6 +96,18 @@ const Header = () => {
                         <a href="#features" className="block text-gray-700 hover:text-gray-900">Features</a>
                         <a href="#testimonial" className="block text-gray-700 hover:text-gray-900">Testimonials</a>
                         <a href="#faq" className="block text-gray-700 hover:text-gray-900">FAQ</a>
+                        {/* Mobile Navigation Auth conditions  */}
+                        <div className="border-t border-gray-200 my-2"></div>
+                        {isAuthenticated ? (
+                            <div className='p-4'>
+                                <Button>
+                                    
+                                </Button>
+                            </div>
+                        ):(
+                        <>
+                        
+                        </>)}
                         <Link to="/login" className="block text-gray-700 hover:text-gray-900">Login</Link>
                         <Link to="/signup" className="block bg-gradient-to-r from-blue-950 to-blue-800 text-white px-4 py-2 rounded-lg font-medium hover:scale-105 transition-all duration-200">Sign Up</Link>
                     </div>
