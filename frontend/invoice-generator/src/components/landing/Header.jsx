@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FileText, Menu, X } from "lucide-react";
 import ProfileDropDown from '../layout/ProfileDropDown';
+import { useNavigate } from 'react-router-dom';
+import Button from '../ui/Button';
 
 const Header = () => {
+    const navigate = useNavigate();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
 
 
     const isAuthenticated = true;
@@ -98,18 +100,21 @@ const Header = () => {
                         <a href="#faq" className="block text-gray-700 hover:text-gray-900">FAQ</a>
                         {/* Mobile Navigation Auth conditions  */}
                         <div className="border-t border-gray-200 my-2"></div>
+
                         {isAuthenticated ? (
                             <div className='p-4'>
-                                <Button>
-                                    
+                                <Button onClick={() => navigate('/dashboard')} className='w-full' >
+                                    Go to Dashboard
                                 </Button>
                             </div>
-                        ):(
-                        <>
-                        
-                        </>)}
-                        <Link to="/login" className="block text-gray-700 hover:text-gray-900">Login</Link>
-                        <Link to="/signup" className="block bg-gradient-to-r from-blue-950 to-blue-800 text-white px-4 py-2 rounded-lg font-medium hover:scale-105 transition-all duration-200">Sign Up</Link>
+                        ) : (
+                            <>
+                                <Link to="/login" className="block text-gray-700 hover:text-gray-900">Login</Link>
+                                <Link to="/signup" className="block bg-gradient-to-r from-blue-950 to-blue-800 text-white px-4 py-2 rounded-lg font-medium hover:scale-105 transition-all duration-200">Sign Up</Link>
+                            </>)}
+
+
+
                     </div>
                 </div>
             )}

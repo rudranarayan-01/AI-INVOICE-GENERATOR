@@ -23,10 +23,17 @@ const Button = ({
     };
 
     return (
-        <button className={`${baseClasses} ${variantClases[variant]} ${sizeClasses[size]} ${isLoading ? 'cursor-not-allowed' : ''}`} disabled={disabled || isLoading} {...props}>
+        <button
+            className={`${baseClasses} ${variantClases[variant]} ${sizeClasses[size]} ${isLoading ? 'cursor-not-allowed' : ''}`}
+            disabled={disabled || isLoading}
+            {...props}
+        >
             {isLoading ? (
                 <Loader2 className="animate-spin h-5 w-5 mr-2" />
-            ) : (Icon && <Icon className="h-4 w-4 mr-2" />)}
+            ) : (
+                Icon && <Icon className="h-4 w-4 mr-2" />
+            )}
+            {children}
         </button>
     )
 }
