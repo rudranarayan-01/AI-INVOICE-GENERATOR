@@ -11,7 +11,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
-    const isAuthenticated = true;
+    const isAuthenticated = false;
     const user = { name: "John Doe", email: "john@gmail.com" };
     const logout = () => { }; // Replace with actual logout function
 
