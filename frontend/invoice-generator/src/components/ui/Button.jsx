@@ -15,6 +15,7 @@ const Button = ({
         primary: "bg-blue-900 text-white hover:bg-blue-800",
         secondary: "bg-white hover:bg-slate-50 text-scale-700 border border-slate-200",
         ghost: "bg-transparent hover:bg-slate-100 text-scale-700",
+        dark: "bg-gray-900 text-white hover:bg-gray-800",   
     }
     const sizeClasses = {
         sm: 'px-3 py-1.5 h-8 text-sm',
